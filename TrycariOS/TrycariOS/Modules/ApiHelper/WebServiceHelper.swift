@@ -66,7 +66,7 @@ class WebServiceHelper: WebServiceHelperProtocol {
                 return
             }
             
-            guard let result =  try? JSONDecoder().decode([Post].self, from: resultData) else {
+            guard let result =  try? JSONDecoder().decode(responseClass.self, from: resultData) else {
                 let noDataerror = WebServiceError.noInterNet
                 completionBlock(nil,noDataerror)
                 return

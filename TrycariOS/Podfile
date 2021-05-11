@@ -10,7 +10,7 @@ target 'TrycariOS' do
    	    pod 'RxCocoa', '~> 5'
         pod 'Alamofire', '~> 5.2'
         pod 'ReachabilitySwift'
-
+        pod 'RealmSwift', '=10.1.4'
   target 'TrycariOSTests' do
     inherit! :search_paths
         pod 'RxBlocking', '~> 5'

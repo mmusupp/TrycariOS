@@ -79,7 +79,7 @@ extension StoryboardScene {
     
     enum FavoritesSB: String, StoryboardSceneType {
         
-        static let storyboardName = "FavoritesSB"
+        static let storyboardName = "FavouriteSB"
         
         case favoritesVCScene  = "FavoriteVC"
         

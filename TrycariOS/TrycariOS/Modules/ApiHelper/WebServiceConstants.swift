@@ -26,7 +26,7 @@ enum AMHttpMethod : Int {
 struct WebServiceURLs {
     static let baseURL = "https://my-json-server.typicode.com/typicode/demo/"
     static let postsEngPoint = "posts"
-    static let commentsEngPoint = "https://my-json-server.typicode.com/typicode/demo/comments"
+    static let commentsEngPoint = "comments"
 }
 
 public enum WebServiceError: Error {
