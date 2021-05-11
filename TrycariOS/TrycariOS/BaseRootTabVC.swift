@@ -17,18 +17,19 @@ class BaseRootTabVC: UITabBarController, UITabBarControllerDelegate {
 
 extension BaseRootTabVC {
     
-    func getPostsVC() -> PostsVC {
+    func getPostsVC() -> UIViewController {
         let postsVC = StoryboardScene.PostsSB.instantiatePostsVC()
         let title = "Posts"
         let tabBarItem = UITabBarItem(title:title,
                                            image: UIImage(named: "posts")?.imageFlippedForRightToLeftLayoutDirection(),
                                            selectedImage: UIImage(named: "posts")?.imageFlippedForRightToLeftLayoutDirection())
         postsVC.tabBarItem = tabBarItem
-        return postsVC
+        let nvc = UINavigationController(rootViewController: postsVC)
+        return nvc
     }
     
   
-    func getFavoriteVC() -> FavoriteVC {
+    func getFavoriteVC() -> UIViewController {
         let favoriteVC = StoryboardScene.FavoritesSB.instantiateFavoritesVC()
         let title = "Favorites"
         
@@ -36,7 +37,8 @@ extension BaseRootTabVC {
                                            image: UIImage(named: "favorite")?.imageFlippedForRightToLeftLayoutDirection(),
                                            selectedImage: UIImage(named: "favorite")?.imageFlippedForRightToLeftLayoutDirection())
         favoriteVC.tabBarItem = tabBarItem
-        return favoriteVC
+        let nvc = UINavigationController(rootViewController: favoriteVC)
+        return nvc
     }
     
 }

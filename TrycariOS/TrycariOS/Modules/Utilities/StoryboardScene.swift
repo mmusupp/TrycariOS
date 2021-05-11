@@ -54,11 +54,19 @@ extension StoryboardScene {
         
         static let storyboardName = "PostsSB"
         
-        case postsVCVCScene  = "PostsVC"
+        case postsVCScene  = "PostsVC"
         
         static func instantiatePostsVC() -> PostsVC {
-            guard let vc = StoryboardScene.PostsSB.postsVCVCScene.viewController() as? PostsVC else {
+            guard let vc = StoryboardScene.PostsSB.postsVCScene.viewController() as? PostsVC else {
                 fatalError("ViewController 'PostsVC' is not of the expected class PostsVC.")
+            }
+            return vc
+        }
+        
+        case postsDetailVCScene  = "PostsDetailVC"
+        static func instantiatePostsDetailVC() -> PostsDetailVC {
+            guard let vc = StoryboardScene.PostsSB.postsDetailVCScene.viewController() as? PostsDetailVC else {
+                fatalError("ViewController 'PostsDetailVC' is not of the expected class PostsVC.")
             }
             return vc
         }

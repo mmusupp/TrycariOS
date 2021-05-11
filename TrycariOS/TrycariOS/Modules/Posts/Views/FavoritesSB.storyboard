@@ -16,8 +16,20 @@
                     <view key="view" contentMode="scaleToFill" id="gsX-L9-Y5w">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nzD-rr-1Rg">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Vg4-KT-Q2W"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nzD-rr-1Rg" firstAttribute="leading" secondItem="Vg4-KT-Q2W" secondAttribute="leading" id="5Qc-vf-Pxt"/>
+                            <constraint firstItem="Vg4-KT-Q2W" firstAttribute="trailing" secondItem="nzD-rr-1Rg" secondAttribute="trailing" id="UjH-c4-6CG"/>
+                            <constraint firstItem="Vg4-KT-Q2W" firstAttribute="bottom" secondItem="nzD-rr-1Rg" secondAttribute="bottom" id="aKH-Ez-hmX"/>
+                            <constraint firstItem="nzD-rr-1Rg" firstAttribute="top" secondItem="Vg4-KT-Q2W" secondAttribute="top" id="lHc-wb-1OR"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1QK-Y0-1fU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
