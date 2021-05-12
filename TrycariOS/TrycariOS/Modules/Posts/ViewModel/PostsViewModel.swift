@@ -8,28 +8,25 @@
 import Foundation
 import RxSwift
 import RxCocoa
-import RealmSwift
+//import RealmSwift
 import Reachability
 
 protocol  PostsViewModelProtocol {
     var reloadTableView: (()->())? { get set }
     var showError: (()->())? { get set }
-    var posts: [PostDBModel]? { get set }
     func fetchAllPosts()
     func fetchAllComments()
     func retrivedataFromDB()
+    var items:  Observable <[PostDBModel]>? { get set }
 }
 
 class PostsViewModel: NSObject, PostsViewModelProtocol {
+    var items: Observable<[PostDBModel]>?
     
-    lazy var webServiceHelper: WebServiceHelperProtocol = WebServiceHelper()
-
-    var posts: [PostDBModel]?
-    
+    lazy var webServiceHelper: WebServiceHelperProtocol = WebServiceHelper()    
     var reloadTableView: (() -> ())?
     
     var showError: (() -> ())?
-    
     
     func fetchAllPosts() {
         if (try? (Reachability().connection)) != .unavailable {
@@ -52,7 +49,9 @@ class PostsViewModel: NSObject, PostsViewModelProtocol {
     }
     
     func retrivedataFromDB()  {
-        self.posts =  PostDBModel.getAllPost()
+        if let posts = PostDBModel.getAllPost() {
+            items =  Observable.just(posts)
+        }
     }
     
     func fetchAllComments() {

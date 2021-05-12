@@ -302,7 +302,6 @@
 		7E7A1FC7264937E500DD1EC0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7E05DB1B264AA2FC00593B8A /* FavoriteViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -318,6 +317,7 @@
 		7E7A1FC9264937E500DD1EC0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				7E05DB1B264AA2FC00593B8A /* FavoriteViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";

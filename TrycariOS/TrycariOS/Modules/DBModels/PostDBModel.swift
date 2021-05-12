@@ -50,7 +50,7 @@ class PostDBModel: Object {
         }
     }
     
-    func updateasFavorite() {
+    func updateAsFavorite() {
         do {
             let realm = try Realm()
             let posts = realm.objects(PostDBModel.self).filter("id == \(self.id)")

@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class PostsDetailVC: UIViewController {
-
+    private let bag = DisposeBag()
     var post: PostDBModel?
     @IBOutlet weak var lblPostTitle: UILabel!
     @IBOutlet weak var lblCommentsTitle: UILabel!
@@ -17,7 +19,6 @@ class PostsDetailVC: UIViewController {
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.register(UINib(nibName: "CommentsCell", bundle: nil), forCellReuseIdentifier: "CommentsCell")
-            tableView.dataSource = self
             tableView.delegate = self
         }
     }
@@ -30,10 +31,9 @@ class PostsDetailVC: UIViewController {
     }
     
     func initViewModel() {
-        
         viewModel.reloadTableView = {
             DispatchQueue.main.async {
-                self.lblCommentsTitle.text = (self.viewModel.comments?.count ?? 0) > 0 ? "Comments" : ""
+                self.bindRxTable()
                 self.tableView.reloadData()
                 
             }
@@ -48,10 +48,10 @@ class PostsDetailVC: UIViewController {
     }
 }
 
-extension PostsDetailVC: UITableViewDataSource, UITableViewDelegate {
+/*extension PostsDetailVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.viewModel.comments?.count ?? 0
+        self.viewModel.items?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -59,6 +59,15 @@ extension PostsDetailVC: UITableViewDataSource, UITableViewDelegate {
         cell.item = self.viewModel.comments?[indexPath.row]
         return cell
     }
-    
+}*/
 
+
+extension PostsDetailVC: UITableViewDelegate {
+    
+    func bindRxTable() {
+        viewModel.items?.bind(to: tableView.rx.items(cellIdentifier: "CommentsCell",
+                                                     cellType: CommentsCell.self)) { (_, model: CommentsDBModel, cell: CommentsCell) in
+            cell.item = model
+        }.disposed(by: bag)
+    }
 }

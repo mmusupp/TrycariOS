@@ -6,22 +6,27 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 protocol  FavoriteVCViewModelProtocol {
+    
     var reloadTableView: (()->())? { get set }
-    var posts: [PostDBModel]? { get set }
+    
+    var items: Observable<[PostDBModel]>? { get set }
+    
     func fetchFavoritePost()
 }
 
 class FavoriteVCViewModel: NSObject, FavoriteVCViewModelProtocol {
     
-    var posts: [PostDBModel]?
+    var items: Observable<[PostDBModel]>?
+
     var reloadTableView: (() -> ())?
-    var comments: [CommentsDBModel]?
-    
+        
     func fetchFavoritePost() {
-        if let result = PostDBModel.getAllFavoritePosts() {
-            self.posts = result
+        if let results = PostDBModel.getAllFavoritePosts() {
+            items = Observable.just(results)
         }
         self.reloadTableView?()
     }
