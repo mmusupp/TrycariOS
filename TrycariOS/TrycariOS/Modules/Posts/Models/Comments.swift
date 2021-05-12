@@ -24,4 +24,10 @@ struct Comments : Codable {
         postId = try values.decodeIfPresent(Int.self, forKey: .postId)
         body = try values.decodeIfPresent(String.self, forKey: .body)
     }
+    
+    init(id: Int,body: String, postId: Int) {
+        self.id = id
+        self.body = body
+        self.postId = postId
+    }
 }

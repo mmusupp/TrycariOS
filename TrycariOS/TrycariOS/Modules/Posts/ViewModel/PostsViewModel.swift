@@ -22,7 +22,6 @@ protocol  PostsViewModelProtocol {
 
 class PostsViewModel: NSObject, PostsViewModelProtocol {
     var items: Observable<[PostDBModel]>?
-    
     lazy var webServiceHelper: WebServiceHelperProtocol = WebServiceHelper()    
     var reloadTableView: (() -> ())?
     

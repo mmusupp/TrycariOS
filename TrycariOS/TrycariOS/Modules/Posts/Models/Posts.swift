@@ -24,4 +24,9 @@ struct Post : Codable {
         id = try values.decodeIfPresent(Int.self, forKey: .id)
         title = try values.decodeIfPresent(String.self, forKey: .title)
     }
+    
+    init(id: Int,title: String) {
+        self.id = id
+        self.title = title
+    }
 }
